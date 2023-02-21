@@ -20,6 +20,15 @@ const connect = function () { //establishing conection
     // }, 100);
    
   });
+
+  // conn.on("connect", () => {
+  //   setTimeout(() => {
+  //     conn.write("Move: up");
+  //   }, 500);
+  //   setTimeout(() => {
+  //     conn.write("Move: left");
+  //   }, 1000);
+  // });
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
