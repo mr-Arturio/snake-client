@@ -2,6 +2,6 @@ const { connect } = require('./client');// establishes a connection with the gam
 const { setupInput } = require('./input');// setup interface to handle user input from stdin
 
 console.log("Connecting ...");
-connect();
+const conn = connect();
 
-setupInput();
+setupInput(conn);
