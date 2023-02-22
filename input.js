@@ -1,3 +1,5 @@
+const { gameMovement, messages } = require("./constants");
+
 let connection;
 
 // setup interface to handle user input from stdin
@@ -13,30 +15,18 @@ const setupInput = (conn) => {
 
 const handleUserInput = function (key) {
   // ctrl + c to exit
-   if (key === '\u0003') {
+  if (key === '\u0003') {
     process.exit();
   }
-  if(key === 'w'){
-    connection.write("Move: up")
-  }
-  if(key === 'a'){
-    connection.write("Move: left")
-  }
-  if(key === 's'){
-    connection.write("Move: down")
-  }
-  if(key === 'd'){
-    connection.write("Move: right")
+
+  // Check for movement keys
+  if (gameMovement[key]) {
+    connection.write(gameMovement[key]);
   }
 
-  if(key === 'q'){
-    connection.write('Say: sheeesh!')
-  }
-  if(key === 'e'){
-    connection.write('Say: ssspeedy!')
-  }
-  if(key === 'p'){
-    connection.write('Say: sssneaky!')
+  // Check for message keys
+  if (messages[key]) {
+    connection.write(messages[key]);
   }
 };
 
