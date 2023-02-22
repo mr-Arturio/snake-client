@@ -7,21 +7,24 @@ const connect = function () { //establishing conection
     port: PORT
   });
 
-
   conn.on("connect", () => { //message after connection established
     console.log('Successfully connected to game server!');
     //sending a Name to the server
-    
-        conn.write(`Name: ${Name}`);
-       });
 
+    conn.write(`Name: ${Name}`);
+  });
 
   // interpret incoming data as text
   conn.setEncoding("utf8");
 
   conn.on("data", (data) => {
     console.log("Server says: ", data);
-     });
+  });
+
+  //print a message indicating that the player has left the game
+  conn.on("end", () => {
+    console.log(`${Name} has left the game`);
+  });
 
   return conn;
 };
